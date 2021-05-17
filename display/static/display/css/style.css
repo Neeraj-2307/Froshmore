@@ -14,7 +14,7 @@ body{
     background-color: #fff;
 }
 .hero{
-    background-image: url("img/background.png");
+    background-image: url("../img/background.png");
     grid-template-columns: repeat(20,1fr);
     grid-auto-rows: minmax(50px,auto);
     display: grid;
