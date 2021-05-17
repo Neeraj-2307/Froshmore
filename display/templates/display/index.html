@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href={% static "display/style.css" %}>
+    <title>Home Page</title>
+</head>
+<body>
+    <!-- Import typed.min.js file from typed.js folder -->
+    <script src=
+        {% static 'display/typed.js-master/lib/typed.min.js'%}>
+    </script>
+
+    <div class="hero">
+    
+            <div class="logo">
+                logo
+            </div>
+            <div class="home">
+                Home
+            </div>
+            <div class="service">
+                Services
+            </div>
+            <div class="about">
+                About
+            </div>
+            <div class="login">
+                Log In
+            </div>
+            <div class="contact">
+                Contact
+            </div>
+            <div class="brandname">
+                <h1>
+                    FROSHMORE
+                </h1> <br>
+                <h3>
+                    <span class="text-slider-items">
+                        Our Brand Line Here, We can also write something else here
+                    </span>
+                    <strong class="text-slider"></strong>
+                </h3>
+            </div>
+        
+    </div>
+    <div class="our_services">
+        <h1>
+            Our services
+        </h1>
+        <br>
+        <div class="services">
+            <div class="rental">
+            <img src="{% static 'display/img/rental.png'%}" alt="">
+                <h1>
+                    Rental
+                </h1>
+                <h3>
+                    One stop destination to find all nearby hostels and pg.
+                </h3>
+            </div>
+            <div class="tiffin">
+                <img src="{% static 'display/img/tiffin.png'%}" alt="">
+                <h1>Tiffin</h1>
+                <h3>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                </h3>
+            </div>
+            <div class="misc">
+                <img src="{% static 'display/img/misc.png'%}" alt="">
+                <h1>Miscellaneous</h1>
+                <h3>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, itaque?
+                </h3>
+            </div>
+        </div>
+    </div>
+    
+    <div class="contact_us">
+        <h1>
+            Have any querry?
+        </h1>
+        <br>
+        <h3>
+            Feel Free to contact us
+        </h3>
+        <div class="container">
+            <div class="contact-box">
+			
+				<h2>Contact Us</h2>
+				<input type="text" class="field" placeholder="Your Name">
+				<input type="email" class="field" placeholder="Your Email">
+				<input type="text" class="field" placeholder="Phone">
+				<textarea placeholder="Message" class="field"></textarea>
+				<button type="submit" class="btn">Send</button>
+		    </div>
+        </div>
+    </div>
+    
+      
+    <!-- Add jquery cdn -->
+    <script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+  
+    <!-- Add this script for successful 
+        implementation of typed.js  -->
+    <script>
+        if ($(".text-slider").length == 1) {
+              
+            var typed_strings = 
+                $(".text-slider-items").text();
+  
+            var typed = new Typed(".text-slider", {
+                strings: typed_strings.split(", "),
+                typeSpeed: 50,
+                loop: true,
+                backDelay: 900,
+                backSpeed: 30,
+            });
+        }
+    </script>
+
+</body>
+</html>
