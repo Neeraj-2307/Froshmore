@@ -29,11 +29,17 @@
                 <a href="#"> Services </a>
             </div>
             <div class="about">
-                <a href="#"> About </a>
+                <a href="aboutus"> About </a>
             </div>
+            {% if user.is_authenticated %}
             <div class="login">
-                <a href="#"> Login </a>
+                <a href="logout"> Log Out from {{ user.first_name }} </a>
             </div>
+            {%else%}
+            <div class="login">
+                <a href="login"> Login </a>
+            </div>
+            {%endif%}
             <div class="contact">
                 <a href="#"> Contact </a>
             </div>
