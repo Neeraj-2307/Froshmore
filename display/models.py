@@ -32,22 +32,22 @@ class hostel(models.Model):
     def __str__(self):
         return self.hostel_name +" " + self.hostel_area 
 
-class  tiffin_service(models.Model):
-    tiffin_service_name=models.CharField(max_length=80, default="")
-    tiffin_service_state=models.CharField(max_length=30, default="")
-    tiffin_service_city=models.CharField(max_length=30, default="")
-    tiffin_service_area=models.CharField(max_length=120, default="")
-    tiffin_service_address=models.CharField(max_length=120, default="")
-    tiffin_service_pincode=models.IntegerField(default="")
-    tiffin_service_price=models.IntegerField(default="0")
-    tiffin_service_contactnumber=models.IntegerField(default="+91")
-    tiffin_service_mealtype=models.CharField(max_length=120, default="veg")
-    tiffin_service_mealsperday=models.IntegerField(default=3)
-    tiffin_service_description=models.TextField(max_length=200, default="")
-    tiffin_service_images1=models.ImageField(upload_to='display/img/tiffin_service_images' ,default="")
-    tiffin_service_image2=models.ImageField(upload_to='display/img/tiffin_service_images' ,default="")
+class  tiffinservice(models.Model):
+    tiffinservice_name=models.CharField(max_length=80, default="")
+    tiffinservice_state=models.CharField(max_length=30, default="")
+    tiffinservice_city=models.CharField(max_length=30, default="")
+    tiffinservice_area=models.CharField(max_length=120, default="")
+    tiffinservice_address=models.CharField(max_length=120, default="")
+    tiffinservice_pincode=models.IntegerField(default="")
+    tiffinservice_price=models.IntegerField(default="0")
+    tiffinservice_contactnumber=models.IntegerField(default="+91")
+    tiffinservice_mealtype=models.CharField(max_length=120, default="veg")
+    tiffinservice_mealsperday=models.IntegerField(default=3)
+    tiffinservice_description=models.TextField(max_length=200, default="")
+    tiffinservice_images1=models.ImageField(upload_to='display/img/tiffin_service_images' ,default="")
+    tiffinservice_image2=models.ImageField(upload_to='display/img/tiffin_service_images' ,default="")
     def __str__(self):
-        return self.tiffin_service_name 
+        return self.tiffinservice_name 
 
 class  laundry(models.Model):
     laundry_name=models.CharField(max_length=80, default="")
