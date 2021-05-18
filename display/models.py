@@ -58,10 +58,10 @@ class  laundry(models.Model):
     laundry_pincode=models.IntegerField(default="110006")
     laundry_price=models.IntegerField(default="0")
     laundry_contactnumber=models.IntegerField(default="+91")
-    laundry_description=models.TextField(max_length=200, default="")
+    laundry_description=models.TextField(max_length=500, default="")
     laundry_images1=models.ImageField(upload_to='display/img/laundry_images', default="" )
     def __str__(self):
-        return self.laundry_name 
+        return self.laundry_name + self.laundry_area 
 
 class  library(models.Model):
     library_name=models.CharField(max_length=80, default="")
@@ -74,7 +74,7 @@ class  library(models.Model):
     library_contactnumber=models.IntegerField(default="+91")
     library_pincode=models.IntegerField(default="00")
     library_area=models.CharField(max_length=120, default="")
-    library_description=models.TextField(max_length=200, default="")
+    library_description=models.TextField(max_length=500, default="")
     library_images1=models.ImageField(upload_to='display/img/library_images', default="" )
     def __str__(self):
-        return self.library_name 
+        return self.library_name + self.library_area 
