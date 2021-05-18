@@ -12,11 +12,11 @@ class user_query(models.Model):
         return self.user_name + " " + self.user_email
 class hostel(models.Model):
     hostel_name=models.CharField(max_length=120, default="")
-    hostel_state=models.CharField(max_length=30, default="Delhi")
-    hostel_city=models.CharField(max_length=30, default="Delhi")
-    hostel_area=models.CharField(max_length=120, default="Civil Lines")
-    hostel_pincode=models.IntegerField(default="110054")
-    hostel_address=models.CharField(max_length=120, default="Civil Lines")
+    hostel_state=models.CharField(max_length=30, default="Maharashtra")
+    hostel_city=models.CharField(max_length=30, default="Mumbai")
+    hostel_area=models.CharField(max_length=120, default="Mira Road")
+    hostel_pincode=models.IntegerField(default="401107")
+    hostel_address=models.CharField(max_length=120, default="")
     hostel_rent=models.IntegerField(default="6000")
     hostel_deposit=models.IntegerField(default="5000")
     hostel_contactnumber=models.IntegerField(default="+91")
