@@ -77,4 +77,4 @@ class  library(models.Model):
     library_description=models.TextField(max_length=500, default="")
     library_images1=models.ImageField(upload_to='display/img/library_images', default="" )
     def __str__(self):
-        return self.library_name + self.library_area 
+        return self.library_name +" " + self.library_area 
