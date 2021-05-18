@@ -1,5 +1,6 @@
+from django import http
 from django.shortcuts import render,HttpResponse
-from .models import user_query
+from .models import user_query,hostel
 # Create your views here.
 def home_page(request):
     if request.method == "POST":
@@ -12,3 +13,48 @@ def home_page(request):
             query.save()
             return render(request,"display/index.html")  
     return render(request,"display/index.html")
+
+def rental(request):
+    if request.method == "GET":
+        pincode = request.GET.get('search',"")
+        ac = request.GET.get('ac',"off")
+        visitor_entry = request.GET.get('visitor_entry',"off")
+        water_cooler = request.GET.get('water_cooler',"off")
+        room_cleaning = request.GET.get('room_cleaning',"off")
+        if pincode:
+            all_hostel_name = hostel.objects.filter(hostel_pincode = pincode)
+            if all_hostel_name:
+                demo = {
+                    'hostel_list' : all_hostel_name,
+                }
+                return render(request,"display/rental.html",demo)
+            return render(request,"display/pincode_not_found.html")
+        if visitor_entry == "on":
+            all_hostel_name = hostel.objects.filter(hostel_vistorentry=1)
+        if ac == "on":
+            all_hostel_name = hostel.objects.filter(hostel_ac=1)
+        if water_cooler == "on":
+            all_hostel_name = hostel.objects.filter(hostel_watercooler=1)
+        if room_cleaning == "on":
+            all_hostel_name = hostel.objects.filter(hostel_roomcleaning=1)
+        if visitor_entry=="off" and ac=="off" and water_cooler=="off" and room_cleaning=="off" and pincode=="":
+            all_hostel_name = hostel.objects.all()
+        demo = {
+                    'hostel_list' : all_hostel_name,
+                }
+        return render(request,"display/rental.html",demo)
+
+    else:
+        all_hostel_name = hostel.objects.all()
+        demo2 = {
+                'hostel_list' : all_hostel_name,
+        }
+    return render(request,"display/rental.html",demo2)
+
+
+def tiffin(request):
+    return render(request,"display/tiffin.html")
+    
+
+def misc(request):
+    return render(request, "display/misc.html")

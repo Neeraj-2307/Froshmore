@@ -23,19 +23,19 @@
                 logo
             </div>
             <div class="home">
-                Home
+               <a href="#"> Home </a>
             </div>
             <div class="service">
-                Services
+                <a href="#"> Services </a>
             </div>
             <div class="about">
-                About
+                <a href="#"> About </a>
             </div>
             <div class="login">
-                Log In
+                <a href="#"> Login </a>
             </div>
             <div class="contact">
-                Contact
+                <a href="#"> Contact </a>
             </div>
             <div class="brandname">
                 <h1>
@@ -56,28 +56,35 @@
         </h1>
         <br>
         <div class="services">
+            
             <div class="rental">
             <img src="{% static 'display/img/rental.png'%}" alt="">
+            <a href="{% url 'rental' %}">    
                 <h1>
                     Rental
                 </h1>
                 <h3>
                     One stop destination to find all nearby hostels and pg.
                 </h3>
+            </a>
             </div>
             <div class="tiffin">
                 <img src="{% static 'display/img/tiffin.png'%}" alt="">
+                <a href="{% url 'tiffin' %}">
                 <h1>Tiffin</h1>
                 <h3>
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 </h3>
+                </a>
             </div>
             <div class="misc">
                 <img src="{% static 'display/img/misc.png'%}" alt="">
+                <a href="{% url 'misc' %}">
                 <h1>Miscellaneous</h1>
                 <h3>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, itaque?
                 </h3>
+                </a>
             </div>
         </div>
     </div>
