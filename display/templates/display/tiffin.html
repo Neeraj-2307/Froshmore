@@ -56,17 +56,17 @@
 			
                 <div class="hostel_details">
                     <div class="hostel_image">
-                        <img src="{% static 'display/img/background.png' %}" alt="">
+                        <img src='/media/{{tiffin.tiffinservice_images1}}' class="hostel_image" alt="">
                     </div>
                     <div class="hostel_detail">
                         <h2>
                             {{ tiffin.tiffinservice_name }}
                         </h2>
                         <h3>
-                            {{ tiffin.tiffinservice_price }}
+                            Weekly Charges:{{ tiffin.tiffinservice_price }} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Meal Type: {{ tiffin.tiffinservice_mealtype }}
                         </h3>
                         <h4>
-                            {{ tiffin.tiffinservice_city }} {{ tiffin.tiffinservice_area }} {{ tiffin.tiffinservice_pincode }}
+                            {{ tiffin.tiffinservice_address }}
                         </h4>
                         <h5>
                             {{ tiffin.tiffinservice_description }}
