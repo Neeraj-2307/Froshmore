@@ -14,7 +14,7 @@
 <body>
     <!-- Import typed.min.js file from typed.js folder -->
     <script src=
-        {% static 'display/typed.js-master/lib/typed.min.js'%}>
+        {% static 'display/typed.js-master/lib/typed.min.js'%}></script>
     </script>
 
     <div class="hero">
@@ -29,21 +29,32 @@
                 <a href="#"> Services </a>
             </div>
             <div class="about">
-                <a href="#"> About </a>
+                <a href="aboutus"> About </a>
             </div>
+            {% if user.is_authenticated %}
             <div class="login">
-                <a href="#"> Login </a>
+                <a href="logout"> Log Out </a>
             </div>
+            {%else%}
+            <div class="login">
+                <a href="login"> Login </a>
+            </div>
+            {%endif%}
             <div class="contact">
                 <a href="#"> Contact </a>
             </div>
             <div class="brandname">
+                {% if user.is_authenticated %}
+                <h3>
+                   Hello! {{user.first_name }} 
+                </h3> <br>
+                {%endif%}
                 <h1>
                     FROSHMORE
                 </h1> <br>
                 <h3>
                     <span class="text-slider-items">
-                        Our Brand Line Here, We can also write something else here
+                        Here for your roti, kapda n makaan
                     </span>
                     <strong class="text-slider"></strong>
                 </h3>
