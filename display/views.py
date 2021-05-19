@@ -7,14 +7,38 @@ from .models import user_query,hostel,tiffinservice,laundry,library
 
 def home_page(request):
     if request.method == "POST":
-        if request.POST.get('name') and request.POST.get('email') and request.POST.get('phone') and request.POST.get('message'):
-            name = request.POST.get('name')
-            email = request.POST.get('email')
-            phone = request.POST.get('phone')
-            message = request.POST.get('message')
-            query = user_query(user_name = name,user_email = email,user_number = phone,user_querry = message)
-            query.save()
-            return render(request,"display/index.html")  
+            name = request.POST['name']
+            email = request.POST['email']
+            phone = request.POST['phone']
+            message = request.POST['message']
+            value_con = {
+            'name' :name,
+            'email' :email ,
+            'phone' :phone,
+            }
+            error_query =""
+            if not name:
+                error_query = "Enter your name"
+            if not email:
+                error_query = "Enter your email"
+            if not phone:
+                error_query = "Enter your contact number"
+            if len(phone) < 10:
+                error_query = "Enter a valid phone number"  
+            if not message:
+                error_query = "Enter your message!"
+            if not error_query:                  
+                query = user_query(user_name = name,user_email = email,user_number = phone,user_querry = message)
+                query.save()
+                messages.info(request,"Your message was sent, Thank you!")
+                return redirect('/')
+            else:
+                datac ={
+                'error_con' : error_query,
+                'values_con' : value_con
+            }   
+            return render(request,"display/index.html",datac)  
+
     return render(request,"display/index.html")
 
 
@@ -32,6 +56,7 @@ def register(request):
             'username' :username,
             'email' :email ,
         }
+        agree = request.POST.get('agree-term','off')
         error_message = ""
         if not name:
             error_message = "Name required!!"
@@ -60,9 +85,13 @@ def register(request):
                     messages.info(request,'Your email id already exists!')
                     return redirect('/register/')
                 else:        
-                    user = User.objects.create_user(first_name=name,username=username, email=email,password = pass1)
-                    user.save();
-                    return redirect('/login/')
+                    if agree == "on":
+                        user = User.objects.create_user(first_name=name,username=username, email=email,password = pass1)
+                        user.save();
+                        return redirect('/login/')
+                    else:
+                        messages.info(request,"Process can't be completed without agreeing to TERMS and CONDITIONS")
+                        return redirect('/register/') 
                 
             else:
                 messages.info(request,"Password doesn't match") 
@@ -84,6 +113,12 @@ def login(request):
         username = request.POST['username']
         password = request.POST['password']
 
+        if not username:
+            messages.info(request,"To log in, enter your username!")
+            return redirect("/login/")
+        elif not password:
+            messages.info(request,"To log in, enter your password!")
+            return redirect("/login/")
         user = auth.authenticate(username=username,password=password)
         if user is not None:
             auth.login(request,user)

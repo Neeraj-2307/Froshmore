@@ -20,9 +20,11 @@
     <div class="hero">
     
                 <!--img src="{% static 'display/img/logoicon.png'%}" alt="" class="logo"-->
-            <div class="logo">logo </div>
+            <div class="logo">
+                <img src="{% static 'display/img/logoicon.png'%}" height="70" width="70" alt=""></img>
+            </div>
             <div class="service">
-                <a href="#"> Services </a>
+                <a href="#1"> Services </a>
             </div>
             <div class="about">
                 <a href="aboutus"> About Us</a>
@@ -37,17 +39,17 @@
             </div>
             {%endif%}
             <div class="contact">
-                <a href="contactus"> Contact Us </a>
+                <a href="#2"> Contact Us </a>
             </div>
             <div class="brandname">
-                {% if user.is_authenticated %}
-                <h3>
-                   Hello! {{user.first_name }} 
-                </h3> <br>
-                {%endif%}
                 <h1>
                     FROSHMORE
                 </h1> <br>
+                {% if user.is_authenticated %}
+                <h3>
+                   Hello! {{user.first_name }} 
+                </h3> 
+                {%endif%}
                 <h3>
                     <span class="text-slider-items">
                         We are here for your Roti Kapda and Makaan
@@ -56,11 +58,11 @@
                     <strong class="text-slider"></strong>
                 </h3>
             </div>
-        
+            
     </div>
     <div class="our_services">
         <h1>
-            Our services
+          <a id="1">  Our services  </a>
         </h1>
         <br>
         <div class="services">
@@ -96,9 +98,20 @@
             </div>
         </div>
     </div>
+    {% if error_con %}
+        <div class = "alert alert-danger" role= "alert">
+            <h3 style ="color : red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ error_con }}!!</h3>
+        </div>
+    {% endif %}
+    {% for message in messages %}
+        <div class="alert alert-success">
+            <h3 style="color: blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ message }}</h3> 
+        </div>
+    {% endfor %}
     <div class="contact_us" >
+        
         <h1>
-            Have any querry?
+            <a id="2"> Have any query or any suggestions? </a>
         </h1>
         <br>
         <h3>
@@ -119,7 +132,9 @@
 				<textarea placeholder="Message" id="message" name="message" class="field"></textarea>
                 <label for="message"></label>
 				<button type="submit" class="btn">Send</button>
+                
                 </form>
+                
 		    </div>
         </div>
     </div>
