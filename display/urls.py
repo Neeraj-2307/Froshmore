@@ -5,7 +5,10 @@ urlpatterns = [
 	path("", views.home_page,name="home"),
 	path("rental/",views.rental,name="rental"),
 	path("tiffin/",views.tiffin,name="tiffin"),
-	path("miscellaneous/",views.misc,name="misc"),
-	path("laundry/",views.laundry,name="laundry"),
-	path("library/",views.library,name="library"),
+	path("miscellaneous",views.misc,name="misc"),
+	path("register/",views.register,name="register"),
+	path("login/",views.login,name="login"),
+	path("logout/",views.logout,name="logout"),
+	path("laundry/",views.laundary,name="laundry"),
+	path("library/",views.lib,name="library"),
 ]

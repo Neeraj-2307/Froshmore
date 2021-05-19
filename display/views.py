@@ -1,7 +1,10 @@
 from django import http
-from django.shortcuts import render,HttpResponse
-from .models import user_query,hostel,tiffinservice
+from django.shortcuts import render,HttpResponse,redirect
+from django.contrib.auth.models import User,auth
+from django.contrib import messages
+from .models import user_query,hostel,tiffinservice,laundry,library
 # Create your views here.
+
 def home_page(request):
     if request.method == "POST":
         if request.POST.get('name') and request.POST.get('email') and request.POST.get('phone') and request.POST.get('message'):
@@ -13,6 +16,91 @@ def home_page(request):
             query.save()
             return render(request,"display/index.html")  
     return render(request,"display/index.html")
+
+
+def register(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        username = request.POST['username']
+        email = request.POST['email']
+        pass1 = request.POST['pass1']
+        pass2 = request.POST['pass2']
+
+        # validation
+        value = {
+            'name' :name,
+            'username' :username,
+            'email' :email ,
+        }
+        error_message = ""
+        if not name:
+            error_message = "Name required!!"
+        elif len(name) < 3:
+            error_message = "Name should be atleast of 3 characters!!"
+        elif not username:
+            error_message = "Username can't be blank!!"
+        elif len(username) < 3:
+            error_message = "Username should be atleast of 3 characters!!" 
+        elif not email:
+            error_message = "Email Required !!"      
+        elif not pass1:
+            error_message = "Password Required !!"
+        elif len(pass1) < 6:
+            error_message = "Password can't be smaller than 6 characters!!"
+        elif not pass2:
+            error_message = "Confirm Password can't be blank!!"      
+
+
+        if not error_message:
+            if pass1==pass2:
+                if User.objects.filter(username=username).exists():
+                    messages.info(request,'Username already in use!')
+                    return redirect('/register/')
+                elif User.objects.filter(email=email).exists():
+                    messages.info(request,'Your email id already exists!')
+                    return redirect('/register/')
+                else:        
+                    user = User.objects.create_user(first_name=name,username=username, email=email,password = pass1)
+                    user.save();
+                    return redirect('/login/')
+                
+            else:
+                messages.info(request,"Password doesn't match") 
+                return redirect('/register/')    
+        else:
+            data ={
+                'error' : error_message,
+                'values' : value
+            }   
+            return render(request,"display/register.html",data)      
+           
+
+    else:
+        return render(request,"display/register.html") 
+
+
+def login(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = auth.authenticate(username=username,password=password)
+        if user is not None:
+            auth.login(request,user)
+            return redirect("/")
+        else:
+            messages.info(request,"Invalid Credentials!")
+            return redirect('/login/')    
+    else:    
+        return render(request,"display/login.html") 
+
+def logout(request):
+    auth.logout(request)
+    return redirect('/')  
+
+def about(request):
+    return render(request,"display/aboutus.html")          
+
 
 def rental(request):
     if request.method == "GET":
@@ -80,8 +168,50 @@ def tiffin(request):
 def misc(request):
     return render(request, "display/misc.html")
 
-def laundry(request):
-    return HttpResponse("laundary details here")
+def laundary(request):
+    if request.method == "GET":
+        pincode = request.GET.get('search',"")
+        if pincode:
+            all_laundry_name = laundry.objects.filter(laundry_pincode = pincode)
+            if all_laundry_name:
+                demo = {
+                    'laundry_list' : all_laundry_name,
+                }
+                return render(request,"display/laundry.html",demo)
+            return render(request,"display/pincode_not_found.html")
+        all_laundry_name = laundry.objects.all()
+        demo = {
+                    'laundry_list' : all_laundry_name,
+                }
+        return render(request,"display/laundry.html",demo)
 
-def library(request):
-    return HttpResponse("library details here")
+    else:
+        all_laundry_name = laundry.objects.all()
+        demo2 = {
+                'laundry_list' : all_laundry_name,
+        }
+    return render(request,"display/laundry.html",demo2)
+
+def lib(request):
+    if request.method == "GET":
+        pincode = request.GET.get('search',"")
+        if pincode:
+            all_lib_name = library.objects.filter(library_pincode = pincode)
+            if all_lib_name:
+                demo = {
+                    'library_list' : all_lib_name,
+                }
+                return render(request,"display/library.html",demo)
+            return render(request,"display/pincode_not_found.html")
+        all_lib_name = library.objects.all()
+        demo = {
+                    'library_list' : all_lib_name,
+                }
+        return render(request,"display/library.html",demo)
+
+    else:
+        all_lib_name = library.objects.all()
+        demo2 = {
+                'library_list' : all_lib_name,
+        }
+    return render(request,"display/library.html",demo2)
