@@ -7,9 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href={% static "display/css/rental_style.css" %}>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
-    <div class="navbar">
+    <!--div class="navbar">
         <div class="main_navbar">
             <div class="ele">
             <a href="{% url 'home' %}">
@@ -31,7 +33,28 @@
                 <h5>Miscellaneous</h5>
             </a>
             </div>
-        </div>
+        </div-->
+        <div class="topnav" id="myTopnav">
+<a class="active" href="{% url 'home' %}"><i class="fa fa-home"></i>Home</a>
+  <a class="active" href="{% url 'rental' %}">Hostel/PG</a>
+  <a class="active" href="{% url 'tiffin' %}">Tiffin Services</a>
+  <a class="active" href="{% url 'library' %}">library facilities</a>
+  <a class="active" href="{% url 'aboutus' %}">About us</a>
+  <div  class="topnav-right">
+     {% if user.is_authenticated %}
+            <div class="login">
+                <a href="{% url 'logout' %}"><i class="fa fa-fw fa-user"></i>logout</a>
+            </div>
+            {%else%}
+            <div class="login">
+                <a href="{% url 'login' %}"><i class="fa fa-fw fa-user"></i>login</a>
+            </div>
+            {%endif%}
+    </div>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
         <div class="remaining">
             Choose from the following options
         </div>
@@ -89,6 +112,17 @@
         <a href="https://github.com/aparnasingh26" target="_blank">&nbsp;&nbsp;Aparna Singh</a>
     
 </div>
+<!--js for navbar-->
+     <script>
+    function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav" || x.className === "topnav-right") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+    </script>
 
 </body>
 </html>
