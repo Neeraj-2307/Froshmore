@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href={% static "display/css/misc.css" %}>
+</head>
+<body>
+    
+    <div class="navbar">
+        <div class="main_navbar">
+            <div class="ele">
+            <a href="{% url 'home' %}">
+                <h5>home</h5>
+            </a>
+            </div>
+            <div class="ele selected">
+            <a href="{% url 'rental' %}">
+                <h5>Hostels</h5>
+            </a>
+            </div>
+            <div class="ele">
+            <a href="{% url 'tiffin' %}">
+                <h5>Tiffin</h5>
+            </a>
+            </div>
+            <div class="ele">
+            <a href="{% url 'misc' %}">
+                <h5>Miscellaneous</h5>
+            </a>
+            </div>
+        </div>
+        <div class="remaining">
+            SELECT THE SERVICE
+        </div>
+    </div>
+
+    <div class="our_services">
+        <h1>
+            Our services
+        </h1>
+        <br>
+        <div class="services">
+            
+            <div class="rental">
+            <img src="{% static 'display/img/library.png'%}" alt="">
+            <a href="{% url 'library' %}">    
+                <h1>
+                    Library
+                </h1>
+                <h3>
+                    One stop destination to find all nearby hostels and pg.
+                </h3>
+            </a>
+            </div>
+            <div class="tiffin">
+                <img src="{% static 'display/img/laundry.png'%}" alt="">
+                <a href="{% url 'laundry' %}">
+                <h1>Laundry</h1>
+                <h3>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                </h3>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        
+        Made by <a href="https://github.com/Neeraj-2307" target="_blank">&nbsp;&nbsp;Neeraj Joshi</a>
+        <a href="https://github.com/Pragati-64" target="_blank">&nbsp;&nbsp;Pragati Gupta</a>
+        <a href="https://github.com/anjalirajj" target="_blank">&nbsp;&nbsp;Anjali Raj</a>
+        <a href="https://github.com/aparnasingh26" target="_blank">&nbsp;&nbsp;Aparna Singh</a>
+    
+</div>
+  
+</body>
+</html>

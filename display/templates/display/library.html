@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href={% static "display/css/rental_style.css" %}>
+</head>
+<body>
+    <div class="navbar">
+        <div class="main_navbar">
+            <div class="ele">
+            <a href="{% url 'home' %}">
+                <h5>home</h5>
+            </a>
+            </div>
+            <div class="ele selected">
+            <a href="{% url 'rental' %}">
+                <h5>Hostels</h5>
+            </a>
+            </div>
+            <div class="ele">
+            <a href="{% url 'tiffin' %}">
+                <h5>Tiffin</h5>
+            </a>
+            </div>
+            <div class="ele">
+            <a href="{% url 'misc' %}">
+                <h5>Miscellaneous</h5>
+            </a>
+            </div>
+        </div>
+        <div class="remaining">
+            Choose from the following options
+        </div>
+    </div>
+    <div class="container">
+        <div class="left">
+            
+            <h3>
+                Select Filters
+            </h3>
+            <form method="GET" action="{% url 'library' %}">
+                <input name="search" id="search" class="form" type="search" placeholder="Search By Pincode" aria-label="Search">
+                
+            
+                <input type="submit" value="Apply" class="submit">
+            </form>
+        </div>
+        <div class="right">
+            
+
+            {% for lib in library_list %}
+			
+                <div class="hostel_details">
+                    <div class="hostel_image">
+                        <img src="{% static 'display/img/background.png' %}" alt="">
+                    </div>
+                    <div class="hostel_detail">
+                        <h2>
+                            {{ lib.library_name }}
+                        </h2>
+                        <h3>
+                            {{ lib.library_price }}
+                        </h3>
+                        <h4>
+                            {{ lib.library_city }} {{ lib.library_area }} {{ lib.library_pincode }}
+                        </h4>
+                        <h5>
+                            {{ lib.library_description }}
+                        </h5>
+                    </div>
+                </div>
+                
+		    {% endfor %}
+
+
+            
+        </div>
+    </div>
+
+    <div class="footer">
+        
+        Made by <a href="https://github.com/Neeraj-2307" target="_blank">&nbsp;&nbsp;Neeraj Joshi</a>
+        <a href="https://github.com/Pragati-64" target="_blank">&nbsp;&nbsp;Pragati Gupta</a>
+        <a href="https://github.com/anjalirajj" target="_blank">&nbsp;&nbsp;Anjali Raj</a>
+        <a href="https://github.com/aparnasingh26" target="_blank">&nbsp;&nbsp;Aparna Singh</a>
+    
+</div>
+
+</body>
+</html>

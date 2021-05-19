@@ -14,7 +14,7 @@
 <body>
     <!-- Import typed.min.js file from typed.js folder -->
     <script src=
-        {% static 'display/typed.js-master/lib/typed.min.js'%}>
+        {% static 'display/typed.js-master/lib/typed.min.js'%}></script>
     </script>
 
     <div class="hero">
@@ -23,27 +23,39 @@
                 logo
             </div>
             <div class="home">
-                Home
+               <a href="#"> Home </a>
             </div>
             <div class="service">
-                Services
+                <a href="#"> Services </a>
             </div>
             <div class="about">
-                About
+                <a href="aboutus"> About </a>
             </div>
+            {% if user.is_authenticated %}
             <div class="login">
-                Log In
+                <a href="logout"> Log Out </a>
             </div>
+            {%else%}
+            <div class="login">
+                <a href="login"> Login </a>
+            </div>
+            {%endif%}
             <div class="contact">
-                Contact
+                <a href="#"> Contact </a>
             </div>
             <div class="brandname">
+                {% if user.is_authenticated %}
+                <h3>
+                   Hello! {{user.first_name }} 
+                </h3> <br>
+                {%endif%}
                 <h1>
                     FROSHMORE
                 </h1> <br>
                 <h3>
                     <span class="text-slider-items">
-                        Our Brand Line Here, We can also write something else here
+                        Here for your roti kapda n makaan,
+                        
                     </span>
                     <strong class="text-slider"></strong>
                 </h3>
@@ -56,28 +68,35 @@
         </h1>
         <br>
         <div class="services">
+            
             <div class="rental">
             <img src="{% static 'display/img/rental.png'%}" alt="">
+            <a href="{% url 'rental' %}">    
                 <h1>
                     Rental
                 </h1>
                 <h3>
                     One stop destination to find all nearby hostels and pg.
                 </h3>
+            </a>
             </div>
             <div class="tiffin">
                 <img src="{% static 'display/img/tiffin.png'%}" alt="">
+                <a href="{% url 'tiffin' %}">
                 <h1>Tiffin</h1>
                 <h3>
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                 </h3>
+                </a>
             </div>
             <div class="misc">
                 <img src="{% static 'display/img/misc.png'%}" alt="">
+                <a href="{% url 'misc' %}">
                 <h1>Miscellaneous</h1>
                 <h3>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, itaque?
                 </h3>
+                </a>
             </div>
         </div>
     </div>
@@ -110,6 +129,16 @@
         </div>
     </div>
     
+
+    <div class="footer">
+        
+            Made by <a href="https://github.com/Neeraj-2307" target="_blank">&nbsp;&nbsp;Neeraj Joshi</a>
+            <a href="https://github.com/Pragati-64" target="_blank">&nbsp;&nbsp;Pragati Gupta</a>
+            <a href="https://github.com/anjalirajj" target="_blank">&nbsp;&nbsp;Anjali Raj</a>
+            <a href="https://github.com/aparnasingh26" target="_blank">&nbsp;&nbsp;Aparna Singh</a>
+        
+    </div>
+
       
     <!-- Add jquery cdn -->
     <script src=
