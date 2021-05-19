@@ -79,3 +79,9 @@ def tiffin(request):
 
 def misc(request):
     return render(request, "display/misc.html")
+
+def laundry(request):
+    return HttpResponse("laundary details here")
+
+def library(request):
+    return HttpResponse("library details here")
