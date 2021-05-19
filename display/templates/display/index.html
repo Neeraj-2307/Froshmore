@@ -19,29 +19,25 @@
 
     <div class="hero">
     
-            <div class="logo">
-                logo
-            </div>
-            <div class="home">
-               <a href="#"> Home </a>
-            </div>
+                <!--img src="{% static 'display/img/logoicon.png'%}" alt="" class="logo"-->
+            <div class="logo">logo </div>
             <div class="service">
                 <a href="#"> Services </a>
             </div>
             <div class="about">
-                <a href="aboutus"> About </a>
+                <a href="aboutus"> About Us</a>
             </div>
             {% if user.is_authenticated %}
             <div class="login">
-                <a href="logout"> Log Out </a>
+                <a href="logout">logout</a>
             </div>
             {%else%}
             <div class="login">
-                <a href="login"> Login </a>
+                <a href="login">login</a>
             </div>
             {%endif%}
             <div class="contact">
-                <a href="#"> Contact </a>
+                <a href="contactus"> Contact Us </a>
             </div>
             <div class="brandname">
                 {% if user.is_authenticated %}
@@ -54,7 +50,7 @@
                 </h1> <br>
                 <h3>
                     <span class="text-slider-items">
-                        Here for your roti kapda n makaan,
+                        We are here for your Roti Kapda and Makaan
                         
                     </span>
                     <strong class="text-slider"></strong>
@@ -100,8 +96,7 @@
             </div>
         </div>
     </div>
-    
-    <div class="contact_us">
+    <div class="contact_us" >
         <h1>
             Have any querry?
         </h1>
@@ -128,7 +123,6 @@
 		    </div>
         </div>
     </div>
-    
 
     <div class="footer">
         

@@ -56,17 +56,17 @@
 			
                 <div class="hostel_details">
                     <div class="hostel_image">
-                        <img src="{% static 'display/img/background.png' %}" alt="">
+                        <img src='/media/{{lib.library_images1}}' class="hostel_image" alt="">
                     </div>
                     <div class="hostel_detail">
                         <h2>
                             {{ lib.library_name }}
                         </h2>
                         <h3>
-                            {{ lib.library_price }}
+                            Weekly Charges: {{ lib.library_deposit }}
                         </h3>
                         <h4>
-                            {{ lib.library_city }} {{ lib.library_area }} {{ lib.library_pincode }}
+                            {{ lib.library_address }}
                         </h4>
                         <h5>
                             {{ lib.library_description }}

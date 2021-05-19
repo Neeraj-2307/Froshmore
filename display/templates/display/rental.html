@@ -75,17 +75,17 @@
 			
                 <div class="hostel_details">
                     <div class="hostel_image">
-                        <img src="{% static 'display/img/background.png' %}" alt="">
+                        <img src='/media/{{hostel.hostel_images1}}' class="hostel_image" alt="">
                     </div>
                     <div class="hostel_detail">
                         <h2>
                             {{ hostel.hostel_name }}
                         </h2>
-                        <h3>
-                            {{ hostel.hostel_rent }}
-                        </h3>
                         <h4>
-                            {{ hostel.hostel_city }} {{ hostel.hostel_area }} {{ hostel.hostel_pincode }}
+                            Monthly Rent: {{ hostel.hostel_rent }} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Intial Deposit: {{ hostel.hostel_deposit }}
+                        </h4>
+                        <h4>
+                            {{ hostel.hostel_address }} 
                         </h4>
                         <h5>
                             {{ hostel.hostel_description }}
