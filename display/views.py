@@ -1,6 +1,6 @@
 from django import http
 from django.shortcuts import render,HttpResponse
-from .models import user_query,hostel
+from .models import user_query,hostel,tiffinservice
 # Create your views here.
 def home_page(request):
     if request.method == "POST":
@@ -53,7 +53,28 @@ def rental(request):
 
 
 def tiffin(request):
-    return render(request,"display/tiffin.html")
+    if request.method == "GET":
+        pincode = request.GET.get('search',"")
+        if pincode:
+            all_tiffin_name = tiffinservice.objects.filter(tiffinservice_pincode = pincode)
+            if all_tiffin_name:
+                demo = {
+                    'tiffin_list' : all_tiffin_name,
+                }
+                return render(request,"display/tiffin.html",demo)
+            return render(request,"display/pincode_not_found.html")
+        all_tiffin_name = tiffinservice.objects.all()
+        demo = {
+                    'tiffin_list' : all_tiffin_name,
+                }
+        return render(request,"display/tiffin.html",demo)
+
+    else:
+        all_tiffin_name = tiffinservice.objects.all()
+        demo2 = {
+                'tiffin_list' : all_tiffin_name,
+        }
+    return render(request,"display/tiffin.html",demo2)
     
 
 def misc(request):
