@@ -8,18 +8,39 @@
     
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@1,300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href={% static "display/css/style.css" %}>
-    <title>Home Page</title>
+    <link rel="stylesheet" href={% static "display/css/style.css" %}> 
+     <link rel="stylesheet" href={% static "display/css/indexnavbar.css" %}>  
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <title>Home Page</title>
 </head>
-<body>
+<body background="{% static 'display/img/background.png'%}">
     <!-- Import typed.min.js file from typed.js folder -->
     <script src=
         {% static 'display/typed.js-master/lib/typed.min.js'%}></script>
     </script>
+<!--img src="{% static 'display/img/logoicon.png'%}" height="70" width="70" alt=""-->
+<div class="topnav" id="myTopnav">
+<a class="active" href="{% url 'home' %}"><i class="fa fa-home"></i>Home</a>
+  <a href="#1" >Services</a>
+  <a href="aboutus">About us</a>
+  <a href="#2"><i class="fa fa-fw fa-envelope"></i>Contact</a>
+  <div  class="topnav-right">
+     {% if user.is_authenticated %}
+            <div class="login">
+                <a href="logout"><i class="fa fa-fw fa-user"></i>logout</a>
+            </div>
+            {%else%}
+            <div class="login">
+                <a href="login"><i class="fa fa-fw fa-user"></i>login</a>
+            </div>
+            {%endif%}
+    </div>
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>  
 
-    <div class="hero">
-    
-                <!--img src="{% static 'display/img/logoicon.png'%}" alt="" class="logo"-->
+    <!--div class="hero">
             <div class="logo">
                 <img src="{% static 'display/img/logoicon.png'%}" height="70" width="70" alt=""></img>
             </div>
@@ -40,7 +61,7 @@
             {%endif%}
             <div class="contact">
                 <a href="#2"> Contact Us </a>
-            </div>
+            </div-->
             <div class="brandname">
                 <h1>
                     FROSHMORE
@@ -68,8 +89,9 @@
         <div class="services">
             
             <div class="rental">
+            <a href="{% url 'rental' %}">
             <img src="{% static 'display/img/rental.png'%}" alt="">
-            <a href="{% url 'rental' %}">    
+                
                 <h1>
                     Rental
                 </h1>
@@ -79,6 +101,7 @@
             </a>
             </div>
             <div class="tiffin">
+                <a href="{% url 'tiffin' %}">
                 <img src="{% static 'display/img/tiffin.png'%}" alt="">
                 <a href="{% url 'tiffin' %}">
                 <h1>Tiffin</h1>
@@ -88,6 +111,7 @@
                 </a>
             </div>
             <div class="misc">
+            <a href="{% url 'misc' %}">
                 <img src="{% static 'display/img/misc.png'%}" alt="">
                 <a href="{% url 'misc' %}">
                 <h1>Miscellaneous</h1>
@@ -179,6 +203,17 @@
         if ( window.history.replaceState ) {
         window.history.replaceState( null, null, window.location.href );
         }
+    </script>
+    <!--js for navbar-->
+     <script>
+    function myFunction() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav" || x.className === "topnav-right") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
     </script>
 </body>
 </html>
