@@ -48,7 +48,12 @@
         <div class="services">
             
             <div class="rental">
-            <a href="{% url 'library' %}"> 
+                {% if user.is_authenticated %}    
+                <a href="{% url 'library' %}"> 
+            {%else%}
+            <a href="{% url 'message' %}">
+            {%endif%} 
+            
             <img src="{% static 'display/img/library.png'%}" alt="">
                
                 <h1>
@@ -60,7 +65,12 @@
             </a>
             </div>
             <div class="tiffin">
-            <a href="{% url 'laundry' %}">
+                {% if user.is_authenticated %}    
+                <a href="{% url 'laundry' %}">
+            {%else%}
+            <a href="{% url 'message' %}">
+            {%endif%} 
+            
                 <img src="{% static 'display/img/laundry.png'%}" alt="">
                 <h1>Laundry</h1>
                 <h3>
