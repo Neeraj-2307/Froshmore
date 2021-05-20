@@ -14,9 +14,11 @@
 <body>
       <div class="topnav" id="myTopnav">
 <a class="active" href="{% url 'home' %}"><i class="fa fa-home"></i>Home</a>
-  <a class="active" href="{% url 'rental' %}">Hostel/PG</a>
-  <a class="active" href="{% url 'tiffin' %}">Tiffin Services</a>
-  <a class="active" href="{% url 'aboutus' %}">About us</a>
+
+    <a class="active" href="{% url 'rental' %}">Hostel/PG</a>
+    <a class="active" href="{% url 'tiffin' %}">Tiffin Services</a>
+    <a class="active" href="{% url 'aboutus' %}">About us</a>
+        
   <div  class="topnav-right">
      {% if user.is_authenticated %}
             <div class="login">
