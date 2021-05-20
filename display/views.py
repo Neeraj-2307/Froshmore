@@ -144,28 +144,30 @@ def rental(request):
         visitor_entry = request.GET.get('visitor_entry',"off")
         water_cooler = request.GET.get('water_cooler',"off")
         room_cleaning = request.GET.get('room_cleaning',"off")
+        all_hostel_name = hostel.objects.all()
         if pincode:
-            all_hostel_name = hostel.objects.filter(hostel_pincode = pincode)
-            if all_hostel_name:
-                demo = {
-                    'hostel_list' : all_hostel_name,
-                }
-                return render(request,"display/rental.html",demo)
-            return render(request,"display/pincode_not_found.html")
+            all_hostel_name = all_hostel_name.filter(hostel_pincode = pincode)
+            if not all_hostel_name:
+                return render(request,"display/pincode_not_found.html")  
         if visitor_entry == "on":
-            all_hostel_name = hostel.objects.filter(hostel_vistorentry=1)
+            all_hostel_name = all_hostel_name.filter(hostel_vistorentry=1)
         if ac == "on":
-            all_hostel_name = hostel.objects.filter(hostel_ac=1)
+            all_hostel_name = all_hostel_name.filter(hostel_ac=1)
         if water_cooler == "on":
-            all_hostel_name = hostel.objects.filter(hostel_watercooler=1)
+            all_hostel_name = all_hostel_name.filter(hostel_watercooler=1)
         if room_cleaning == "on":
-            all_hostel_name = hostel.objects.filter(hostel_roomcleaning=1)
+            all_hostel_name = all_hostel_name.filter(hostel_roomcleaning=1)
         if visitor_entry=="off" and ac=="off" and water_cooler=="off" and room_cleaning=="off" and pincode=="":
             all_hostel_name = hostel.objects.all()
         demo = {
                     'hostel_list' : all_hostel_name,
                 }
         return render(request,"display/rental.html",demo)
+                
+                
+                
+        return render(request,"display/pincode_not_found.html")
+        
 
     else:
         all_hostel_name = hostel.objects.all()
