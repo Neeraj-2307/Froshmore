@@ -136,8 +136,41 @@ def logout(request):
 def about(request):
     return render(request,"display/aboutus.html")          
 
-
 def rental(request):
+    if request.method == "GET":
+        pincode = request.GET.get('search',"")
+        ac = request.GET.get('ac',"off")
+        visitor_entry = request.GET.get('visitor_entry',"off")
+        water_cooler = request.GET.get('water_cooler',"off")
+        room_cleaning = request.GET.get('room_cleaning',"off")
+        all_hostel_name = hostel.objects.all()
+        if pincode:
+            all_hostel_name = all_hostel_name.filter(hostel_pincode = pincode)
+            if not all_hostel_name:
+                return render(request,"display/pincode_not_found.html")  
+        if visitor_entry == "on":
+            all_hostel_name = all_hostel_name.filter(hostel_vistorentry=1)
+        if ac == "on":
+            all_hostel_name = all_hostel_name.filter(hostel_ac=1)
+        if water_cooler == "on":
+            all_hostel_name = all_hostel_name.filter(hostel_watercooler=1)
+        if room_cleaning == "on":
+            all_hostel_name = all_hostel_name.filter(hostel_roomcleaning=1)
+        if visitor_entry=="off" and ac=="off" and water_cooler=="off" and room_cleaning=="off" and pincode=="":
+            all_hostel_name = hostel.objects.all()
+        demo = {
+                    'hostel_list' : all_hostel_name,
+                }
+        return render(request,"display/rental.html",demo)
+        
+
+    else:
+        all_hostel_name = hostel.objects.all()
+        demo2 = {
+                'hostel_list' : all_hostel_name,
+        }
+    return render(request,"display/rental.html",demo2)
+"""def rental(request):
     if request.method == "GET":
         pincode = request.GET.get('search',"")
         ac = request.GET.get('ac',"off")
@@ -172,7 +205,7 @@ def rental(request):
         demo2 = {
                 'hostel_list' : all_hostel_name,
         }
-    return render(request,"display/rental.html",demo2)
+    return render(request,"display/rental.html",demo2)"""
 
 
 def tiffin(request):
