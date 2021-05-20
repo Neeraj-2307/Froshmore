@@ -19,18 +19,18 @@
     </script>
 <!--img src="{% static 'display/img/logoicon.png'%}" height="70" width="70" alt=""-->
 <div class="topnav" id="myTopnav">
-<a class="active" href="{% url 'home' %}"><i class="fa fa-home"></i>Home</a>
+<a class="active" href="{% url 'home' %}"><i class="fa fa-home" style="vertical-align: middle;"></i>&nbsp;Home</a>
   <a href="#1" >Services</a>
   <a href="aboutus">About us</a>
-  <a href="#2"><i class="fa fa-fw fa-envelope"></i>Contact</a>
+  <a href="#2"><i class="fa fa-fw fa-envelope" style="vertical-align: middle;"></i>&nbsp;Contact</a>
   <div  class="topnav-right">
      {% if user.is_authenticated %}
             <div class="login">
-                <a href="logout"><i class="fa fa-fw fa-user"></i>logout</a>
+                <a href="logout"><i class="fa fa-fw fa-user" style="vertical-align: middle;"></i>&nbsp;logout</a>
             </div>
             {%else%}
             <div class="login">
-                <a href="login"><i class="fa fa-fw fa-user"></i>login</a>
+                <a href="login"><i class="fa fa-fw fa-user" style="vertical-align: middle;"></i>&nbsp;login</a>
             </div>
             {%endif%}
     </div>
@@ -68,7 +68,7 @@
                 </h1> <br>
                 {% if user.is_authenticated %}
                 <h3>
-                   Hello! {{user.first_name }} 
+                   Hello! {{user.username }} 
                 </h3> 
                 {%endif%}
                 <h3>

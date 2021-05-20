@@ -12,21 +12,17 @@
 </head>
 <body>
     <div class="topnav" id="myTopnav">
-<a class="active" href="{% url 'home' %}"><i class="fa fa-home"></i>Home</a>
+<a class="active" href="{% url 'home' %}"><i class="fa fa-home" style="vertical-align: middle;"></i>&nbsp;Home</a>
   <a class="active" href="{% url 'rental' %}">Hostel/PG</a>
   <a class="active" href="{% url 'misc' %}">Miscellaneous</a>
   <a class="active" href="{% url 'aboutus' %}">About us</a>
-  <!--div  class="topnav-right">
+  <div  class="topnav-right">
      {% if user.is_authenticated %}
             <div class="login">
-                <a href="{% url 'logout' %}"><i class="fa fa-fw fa-user"></i>logout</a>
-            </div>
-            {%else%}
-            <div class="login">
-                <a href="{% url 'login' %}"><i class="fa fa-fw fa-user"></i>login</a>
+                <a href="{% url 'logout' %}"><i class="fa fa-fw fa-user" style="vertical-align: middle;"></i>&nbsp;logout</a>
             </div>
             {%endif%}
-    </div-->
+    </div>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
   </a>
@@ -62,7 +58,7 @@
                             {{ tiffin.tiffinservice_name }}
                         </h2>
                         <h3>
-                            Weekly Charges:{{ tiffin.tiffinservice_price }} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Meal Type: {{ tiffin.tiffinservice_mealtype }}
+                            Monthly Charges:{{ tiffin.tiffinservice_price }} &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; Meal Type: {{ tiffin.tiffinservice_mealtype }}
                         </h3>
                         <h4>
                             {{ tiffin.tiffinservice_address }}
