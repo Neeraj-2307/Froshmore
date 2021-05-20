@@ -12,22 +12,18 @@
 </head>
 <body>
     <div class="topnav" id="myTopnav">
-<a class="active" href="{% url 'home' %}"><i class="fa fa-home"></i>Home</a>
+<a class="active" href="{% url 'home' %}"><i class="fa fa-home" style="vertical-align: middle;"></i>&nbsp;Home</a>
   <a class="active" href="{% url 'rental' %}">Hostel/PG</a>
   <a class="active" href="{% url 'tiffin' %}">Tiffin Services</a>
   <a class="active" href="{% url 'laundry' %}">Laundry</a>
   <a class="active" href="{% url 'aboutus' %}">About us</a>
-  <!--div  class="topnav-right">
+  <div  class="topnav-right">
      {% if user.is_authenticated %}
             <div class="login">
-                <a href="{% url 'logout' %}"><i class="fa fa-fw fa-user"></i>logout</a>
-            </div>
-            {%else%}
-            <div class="login">
-                <a href="{% url 'login' %}"><i class="fa fa-fw fa-user"></i>login</a>
+                <a href="{% url 'logout' %}"><i class="fa fa-fw fa-user" style="vertical-align: middle;"></i>&nbsp;logout</a>
             </div>
             {%endif%}
-    </div-->
+    </div>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
   </a>
