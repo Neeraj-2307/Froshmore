@@ -134,7 +134,10 @@ def logout(request):
     return redirect('/')  
 
 def about(request):
-    return render(request,"display/aboutus.html")          
+    return render(request,"display/aboutus.html") 
+
+def message(request):
+    return render(request,"display/message.html")              
 
 def rental(request):
     if request.method == "GET":

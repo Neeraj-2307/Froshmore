@@ -96,7 +96,6 @@
         </div>
         <div class="right">
             
-            {% if user.is_authenticated %}
             {% for hostel in hostel_list %}
 			
                 <div class="hostel_details">
@@ -120,11 +119,7 @@
                 </div>
                 
 		    {% endfor %}
-            {%else%}
-            <div class="alert alert-danger">
-                <h3>Login to see the services. Click <a href ="{% url 'login' %}">here.</a></h3> 
-           </div>    
-           {%endif%}
+            
 
 
             

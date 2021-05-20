@@ -70,7 +70,7 @@
             </form>
         </div>
         <div class="right">
-            {% if user.is_authenticated %}
+            
 
             {% for laundry in laundry_list %}
 			
@@ -95,11 +95,7 @@
                 </div>
                 
 		    {% endfor %}
-            {% else %}
-            <div class="alert alert-danger">
-                <h3>Login to see the services. Click <a href ="{% url 'login' %}">here.</a></h3> 
-           </div>    
-           {%endif%}
+            
             
         </div>
     </div>
