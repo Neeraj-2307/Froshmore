@@ -122,16 +122,7 @@
             </div>
         </div>
     </div>
-    {% if error_con %}
-        <div class = "alert alert-danger" role= "alert">
-            <h3 style ="color : red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ error_con }}!!</h3>
-        </div>
-    {% endif %}
-    {% for message in messages %}
-        <div class="alert alert-success">
-            <h3 style="color: blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ message }}</h3> 
-        </div>
-    {% endfor %}
+   
     <div class="contact_us" >
         
         <h1>
@@ -156,7 +147,16 @@
 				<textarea placeholder="Message" id="message" name="message" class="field"></textarea>
                 <label for="message"></label>
 				<button type="submit" class="btn">Send</button>
-                
+                {% if error_con %}
+                <div class = "alert alert-danger" role= "alert">
+                    <h3 style ="color : red">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ error_con }}!!</h3>
+                </div>
+                {% endif %}
+                {% for message in messages %}
+                <div class="alert alert-success">
+                    <h3 style="color: blue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ message }}</h3> 
+                </div>
+                {% endfor %}
                 </form>
                 
 		    </div>

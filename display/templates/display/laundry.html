@@ -40,7 +40,7 @@
   <a class="active" href="{% url 'tiffin' %}">Tiffin Services</a>
   <a class="active" href="{% url 'library' %}">library facilities</a>
   <a class="active" href="{% url 'aboutus' %}">About us</a>
-  <div  class="topnav-right">
+  <!----div  class="topnav-right">
      {% if user.is_authenticated %}
             <div class="login">
                 <a href="{% url 'logout' %}"><i class="fa fa-fw fa-user"></i>logout</a>
@@ -50,11 +50,12 @@
                 <a href="{% url 'login' %}"><i class="fa fa-fw fa-user"></i>login</a>
             </div>
             {%endif%}
-    </div>
+    </div-->
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
   </a>
 </div>
+
         <div class="remaining">
             Choose from the following options
         </div>
@@ -73,7 +74,7 @@
             </form>
         </div>
         <div class="right">
-            
+            {% if user.is_authenticated %}
 
             {% for laundry in laundry_list %}
 			
@@ -98,8 +99,11 @@
                 </div>
                 
 		    {% endfor %}
-
-
+            {% else %}
+            <div class="alert alert-danger">
+                <h3>Login to see the services. Click <a href ="{% url 'login' %}">here.</a></h3> 
+           </div>    
+           {%endif%}
             
         </div>
     </div>
