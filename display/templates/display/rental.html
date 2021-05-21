@@ -104,7 +104,7 @@
                     </div>
                     <div class="hostel_detail">
 
-                    <a href={% url 'description_page'  %} style="text-decoration: none;color:#404040">
+                    <a href="{% url 'hosteldesc' hostel.pk %}" style="text-decoration: none;color:#404040">
                         <h2>
                             {{ hostel.hostel_name }}
                         </h2>

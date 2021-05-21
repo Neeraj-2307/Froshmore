@@ -137,10 +137,6 @@ def about(request):
     return render(request,"display/aboutus.html") 
 
 
-
-def description_page(request):
-    return render(request,"display/description_page.html")
-
 def message(request):
     return render(request,"display/message.html")              
 
@@ -291,3 +287,52 @@ def lib(request):
                 'library_list' : all_lib_name,
         }
     return render(request,"display/library.html",demo2)
+
+
+def hostel_description_page(request, hostel_id):
+
+    hostel_detail = hostel.objects.filter(pk=hostel_id)
+    if hostel_detail:
+        demo = {
+                    'hostel_list' : hostel_detail,
+                }
+        return render(request,"display/description_page.html",demo)
+    else:
+	    response = "Hostel with id=" + str(id) + " not found."
+	    return HttpResponse(response)
+
+def tiffin_description_page(request, tiffinservice_id):
+
+    hostel_detail = tiffinservice.objects.filter(pk=tiffinservice_id)
+    if hostel_detail:
+        demo = {
+                    'hostel_list' : hostel_detail,
+                }
+        return render(request,"display/tiffin_desc.html",demo)
+    else:
+	    response = "Tiffin Service with id=" + str(id) + " not found."
+	    return HttpResponse(response)
+
+def library_description_page(request, library_id):
+
+    hostel_detail = library.objects.filter(pk=library_id)
+    if hostel_detail:
+        demo = {
+                    'hostel_list' : hostel_detail,
+                }
+        return render(request,"display/lib_desc.html",demo)
+    else:
+	    response = "Library with id=" + str(id) + " not found."
+	    return HttpResponse(response)
+
+def laundry_description_page(request, laundry_id):
+
+    hostel_detail = laundry.objects.filter(pk=laundry_id)
+    if hostel_detail:
+        demo = {
+                    'hostel_list' : hostel_detail,
+                }
+        return render(request,"display/laundry_desc.html",demo)
+    else:
+	    response = "Laundry with id=" + str(id) + " not found."
+	    return HttpResponse(response)
