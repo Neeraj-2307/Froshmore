@@ -1,3 +1,5 @@
+from django import urls
+from django.conf.urls import url
 from django.urls import path
 from . import views
 
@@ -13,4 +15,6 @@ urlpatterns = [
 	path("library/",views.lib,name="library"),
 	path("aboutus/",views.about,name="aboutus"),
 	path("message/",views.message,name="message"),
+	path("description_page",views.description_page,name="description_page"),
+    #path("description_page/<int:myid>",views.description_page,name="description_page"),
 ]
