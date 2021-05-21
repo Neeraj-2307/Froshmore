@@ -46,7 +46,7 @@
         </div>
         <div class="right">
             
-            {% if user.is_authenticated %}
+    
             {% for tiffin in tiffin_list %}
 			
                 <div class="hostel_details">
@@ -54,6 +54,7 @@
                         <img src='/media/{{tiffin.tiffinservice_images1}}' class="hostel_image" alt="">
                     </div>
                     <div class="hostel_detail">
+                        <a href="{% url 'tiffindesc' tiffin.pk %}" style="text-decoration: none;color:#404040">
                         <h2>
                             {{ tiffin.tiffinservice_name }}
                         </h2>
@@ -66,15 +67,12 @@
                         <h5>
                             {{ tiffin.tiffinservice_description }}
                         </h5>
+                        </a>
                     </div>
                 </div>
                 
 		    {% endfor %}
-            {%else%}
-            <div class="alert alert-danger">
-                <h3>Login to see the services. Click <a href ="{% url 'login' %}">here.</a></h3> 
-           </div>    
-           {%endif%}
+            
 
             
         </div>

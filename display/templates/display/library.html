@@ -46,7 +46,7 @@
             </form>
         </div>
         <div class="right">
-            {% if user.is_authenticated %}
+            
 
             {% for lib in library_list %}
 			
@@ -55,6 +55,7 @@
                         <img src='/media/{{lib.library_images1}}' class="hostel_image" alt="">
                     </div>
                     <div class="hostel_detail">
+                    <a href="{% url 'librarydesc' lib.pk %}" style="text-decoration: none;color:#404040">
                         <h2>
                             {{ lib.library_name }}
                         </h2>
@@ -67,15 +68,12 @@
                         <h5>
                             {{ lib.library_description }}
                         </h5>
+                        </a>
                     </div>
                 </div>
                 
 		    {% endfor %}
-            {%else%}
-            <div class="alert alert-danger">
-                <h3>Login to see the services. Click <a href ="{% url 'login' %}">here.</a></h3> 
-           </div>    
-           {%endif%}
+            
 
             
         </div>

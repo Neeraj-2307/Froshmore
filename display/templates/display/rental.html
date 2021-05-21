@@ -96,7 +96,6 @@
         </div>
         <div class="right">
             
-            {% if user.is_authenticated %}
             {% for hostel in hostel_list %}
 			
                 <div class="hostel_details">
@@ -104,11 +103,13 @@
                         <img src='/media/{{hostel.hostel_images1}}' class="hostel_image" alt="">
                     </div>
                     <div class="hostel_detail">
+
+                    <a href="{% url 'hosteldesc' hostel.pk %}" style="text-decoration: none;color:#404040">
                         <h2>
                             {{ hostel.hostel_name }}
                         </h2>
                         <h4>
-                            Monthly Rent: {{ hostel.hostel_rent }} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Intial Deposit: {{ hostel.hostel_deposit }}
+                            Monthly Rent: {{ hostel.hostel_rent }} Intial Deposit: {{ hostel.hostel_deposit }}
                         </h4>
                         <h4>
                             {{ hostel.hostel_address }} 
@@ -116,15 +117,12 @@
                         <h5>
                             {{ hostel.hostel_description }}
                         </h5>
+                    </a>
                     </div>
                 </div>
                 
 		    {% endfor %}
-            {%else%}
-            <div class="alert alert-danger">
-                <h3>Login to see the services. Click <a href ="{% url 'login' %}">here.</a></h3> 
-           </div>    
-           {%endif%}
+            
 
 
             
