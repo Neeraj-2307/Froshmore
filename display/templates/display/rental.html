@@ -103,11 +103,13 @@
                         <img src='/media/{{hostel.hostel_images1}}' class="hostel_image" alt="">
                     </div>
                     <div class="hostel_detail">
+
+                    <a href={% url 'description_page'  %} style="text-decoration: none;color:#404040">
                         <h2>
                             {{ hostel.hostel_name }}
                         </h2>
                         <h4>
-                            Monthly Rent: {{ hostel.hostel_rent }} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Intial Deposit: {{ hostel.hostel_deposit }}
+                            Monthly Rent: {{ hostel.hostel_rent }} Intial Deposit: {{ hostel.hostel_deposit }}
                         </h4>
                         <h4>
                             {{ hostel.hostel_address }} 
@@ -115,6 +117,7 @@
                         <h5>
                             {{ hostel.hostel_description }}
                         </h5>
+                    </a>
                     </div>
                 </div>
                 

@@ -136,6 +136,11 @@ def logout(request):
 def about(request):
     return render(request,"display/aboutus.html") 
 
+
+
+def description_page(request):
+    return render(request,"display/description_page.html")
+
 def message(request):
     return render(request,"display/message.html")              
 
