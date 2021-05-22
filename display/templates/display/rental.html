@@ -20,6 +20,10 @@
             <div class="login">
                 <a href="{% url 'logout' %}"><i class="fa fa-fw fa-user" style="vertical-align: middle;"></i>&nbsp;logout</a>
             </div>
+            {%else%}
+            <div class="login">
+                <a href="{% url 'login' %}"><i class="fa fa-fw fa-user"></i>login</a>
+            </div>
             {%endif%}
     </div>
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
