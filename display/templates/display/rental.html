@@ -42,13 +42,12 @@
                 Select Filters
             </h3>
             <form method="GET" action="{% url 'rental' %}">
-                <input name="search1" id="search" class="form" type="text" placeholder="type city " aria-label="Search">
-                <input name="search2" id="search" class="form" type="search" placeholder="type pincode" aria-label="Search">
+                <input name="city" id="search" class="form" type="search" placeholder="type city name" aria-label="Search" value="{{city}}">
+                <input name="pincode" id="search" class="form" type="search" placeholder="type pincode" aria-label="Search" value="{{pincode}}">
             <h4>
                 Facilities
-            </h4>
-            <form method="GET" action="{% url 'rental' %}">
-                
+            </h4>               
+            <form method="GET" action="{% url 'rental'  %}">
                 <label for="area1"></label>
                 <input id="area1" type="checkbox" class="field" name="ac"
                 ><h5>AC</h5>
