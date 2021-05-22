@@ -25,37 +25,10 @@
   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
     <i class="fa fa-bars"></i>
   </a>
-</div>
-    <!--div class="navbar">
-        <div class="main_navbar">
-            <div class="ele">
-            <a href="{% url 'home' %}">
-                <h5>home</h5>
-            </a>
-            </div>
-            <div class="ele selected">
-            <a href="{% url 'rental' %}">
-                <h5>Hostels</h5>
-            </a>
-            </div>
-            <div class="ele">
-            <a href="{% url 'tiffin' %}">
-                <h5>Tiffin</h5>
-            </a>
-            </div>
-            <div class="ele">
-            <a href="{% url 'misc' %}">
-                <h5>Miscellaneous</h5>
-            </a>
-            </div>
-        </div-->
-
-        
-        
-        <div class="remaining">
+</div>       
+     <div class="remaining">
             Choose from the following options
         </div>
-    </div>
     
     
     
@@ -69,8 +42,8 @@
                 Select Filters
             </h3>
             <form method="GET" action="{% url 'rental' %}">
-                <input name="search" id="search" class="form" type="search" placeholder="Search By Pincode" aria-label="Search">
-                
+                <input name="search1" id="search" class="form" type="text" placeholder="type city " aria-label="Search">
+                <input name="search2" id="search" class="form" type="search" placeholder="type pincode" aria-label="Search">
             <h4>
                 Facilities
             </h4>
@@ -97,14 +70,18 @@
         <div class="right">
             
             {% for hostel in hostel_list %}
-			
+                  {% if user.is_authenticated %}                      
+			<a href="{% url 'hosteldesc' hostel.pk %}"  style="text-decoration: none;color:#404040">
+            {%else%}
+                <a href="{% url 'message' %}"  style="text-decoration: none;color:#404040">
+                {%endif%}
                 <div class="hostel_details">
                     <div class="hostel_image">
                         <img src='/media/{{hostel.hostel_images1}}' class="hostel_image" alt="">
                     </div>
                     <div class="hostel_detail">
 
-                    <a href="{% url 'hosteldesc' hostel.pk %}" style="text-decoration: none;color:#404040">
+                    
                         <h2>
                             {{ hostel.hostel_name }}
                         </h2>
@@ -117,10 +94,8 @@
                         <h5>
                             {{ hostel.hostel_description }}
                         </h5>
-                    </a>
                     </div>
                 </div>
-                
 		    {% endfor %}
             
 

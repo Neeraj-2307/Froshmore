@@ -49,13 +49,16 @@
             
 
             {% for lib in library_list %}
-			
+            {% if user.is_authenticated %}
+			    <a href="{% url 'librarydesc' lib.pk %}" style="text-decoration: none;color:#404040">
+                {%else%}
+                <a href="{% url 'message' %}"  style="text-decoration: none;color:#404040">
+                {%endif%}
                 <div class="hostel_details">
                     <div class="hostel_image">
                         <img src='/media/{{lib.library_images1}}' class="hostel_image" alt="">
                     </div>
                     <div class="hostel_detail">
-                    <a href="{% url 'librarydesc' lib.pk %}" style="text-decoration: none;color:#404040">
                         <h2>
                             {{ lib.library_name }}
                         </h2>
@@ -68,10 +71,8 @@
                         <h5>
                             {{ lib.library_description }}
                         </h5>
-                        </a>
                     </div>
-                </div>
-                
+                </div>  
 		    {% endfor %}
             
 

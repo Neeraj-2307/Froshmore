@@ -51,13 +51,16 @@
             
 
             {% for laundry in laundry_list %}
-			
+            {% if user.is_authenticated %}
+			 <a href="{% url 'laundrydesc' laundry.pk %}" style="text-decoration: none;color:#404040">
+             {%else%}
+                <a href="{% url 'message' %}"  style="text-decoration: none;color:#404040">
+                {%endif%}
                 <div class="hostel_details">
                     <div class="hostel_image">
                         <img src='/media/{{laundry.laundry_images1}}' class="hostel_image" alt="">
                     </div>
                     <div class="hostel_detail">
-                       <a href="{% url 'laundrydesc' laundry.pk %}" style="text-decoration: none;color:#404040">
                         <h2>
                             {{ laundry.laundry_name }}
                         </h2>
@@ -70,10 +73,8 @@
                         <h5>
                             {{ laundry.laundry_description }}
                         </h5>
-                        </a>
                     </div>
-                </div>
-                
+                </div>    
 		    {% endfor %}
             
             

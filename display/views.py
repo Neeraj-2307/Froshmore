@@ -67,14 +67,16 @@ def register(request):
         elif len(username) < 3:
             error_message = "Username should be atleast of 3 characters!!" 
         elif not email:
-            error_message = "Email Required !!"      
+            error_message = "Email Required !!" 
+        elif email[0]=='@':
+            error_message = "invalid email address !!"
         elif not pass1:
             error_message = "Password Required !!"
         elif len(pass1) < 6:
             error_message = "Password can't be smaller than 6 characters!!"
         elif not pass2:
             error_message = "Confirm Password can't be blank!!"      
-
+        
 
         if not error_message:
             if pass1==pass2:
@@ -142,7 +144,8 @@ def message(request):
 
 def rental(request):
     if request.method == "GET":
-        pincode = request.GET.get('search',"")
+        pincode = request.GET.get('search2',"")
+        city = request.GET.get('search1',"")
         ac = request.GET.get('ac',"off")
         visitor_entry = request.GET.get('visitor_entry',"off")
         water_cooler = request.GET.get('water_cooler',"off")
@@ -150,8 +153,12 @@ def rental(request):
         all_hostel_name = hostel.objects.all()
         if pincode:
             all_hostel_name = all_hostel_name.filter(hostel_pincode = pincode)
-            if not all_hostel_name:
-                return render(request,"display/pincode_not_found.html")  
+            if not all_hostel_name :
+                return render(request,"display/pincode_not_found.html") 
+        if city is not "":
+            all_hostel_name = all_hostel_name.filter(hostel_city = city)
+            if not all_hostel_name :
+                return render(request,"display/pincode_not_found.html")
         if visitor_entry == "on":
             all_hostel_name = all_hostel_name.filter(hostel_vistorentry=1)
         if ac == "on":
