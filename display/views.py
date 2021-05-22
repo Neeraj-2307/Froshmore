@@ -124,8 +124,6 @@ def login(request):
         user = auth.authenticate(username=username,password=password)
         if user is not None:
             auth.login(request,user)
-            if next in request.POST:
-                return redirect(request.POST.get('next')) 
             return redirect("/")
         else:
             messages.info(request,"Invalid Credentials!")
