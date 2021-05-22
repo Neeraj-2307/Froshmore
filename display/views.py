@@ -144,8 +144,8 @@ def message(request):
 
 def rental(request):
     if request.method == "GET":
-        pincode = request.GET.get('search2',"")
-        city = request.GET.get('search1',"")
+        pincode = request.GET.get('pincode',"")
+        city=request.GET.get('city',"")
         ac = request.GET.get('ac',"off")
         visitor_entry = request.GET.get('visitor_entry',"off")
         water_cooler = request.GET.get('water_cooler',"off")
@@ -155,10 +155,6 @@ def rental(request):
             all_hostel_name = all_hostel_name.filter(hostel_pincode = pincode)
             if not all_hostel_name :
                 return render(request,"display/pincode_not_found.html") 
-        if city is not "":
-            all_hostel_name = all_hostel_name.filter(hostel_city = city)
-            if not all_hostel_name :
-                return render(request,"display/pincode_not_found.html")
         if visitor_entry == "on":
             all_hostel_name = all_hostel_name.filter(hostel_vistorentry=1)
         if ac == "on":
@@ -169,12 +165,16 @@ def rental(request):
             all_hostel_name = all_hostel_name.filter(hostel_roomcleaning=1)
         if visitor_entry=="off" and ac=="off" and water_cooler=="off" and room_cleaning=="off" and pincode=="":
             all_hostel_name = hostel.objects.all()
+        if city!='':
+            all_hostel_name = all_hostel_name.filter(hostel_city__exact = city)
+        if not all_hostel_name:
+            return render(request,"display/pincode_not_found.html")
         demo = {
                     'hostel_list' : all_hostel_name,
+                    'pincode': pincode,
+                    'city': city
                 }
         return render(request,"display/rental.html",demo)
-        
-
     else:
         all_hostel_name = hostel.objects.all()
         demo2 = {
