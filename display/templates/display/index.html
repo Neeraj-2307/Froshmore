@@ -38,29 +38,6 @@
     <i class="fa fa-bars"></i>
   </a>
 </div>  
-
-    <!--div class="hero">
-            <div class="logo">
-                <img src="{% static 'display/img/logoicon.png'%}" height="70" width="70" alt=""></img>
-            </div>
-            <div class="service">
-                <a href="#1"> Services </a>
-            </div>
-            <div class="about">
-                <a href="aboutus"> About Us</a>
-            </div>
-            {% if user.is_authenticated %}
-            <div class="login">
-                <a href="logout">logout</a>
-            </div>
-            {%else%}
-            <div class="login">
-                <a href="login">login</a>
-            </div>
-            {%endif%}
-            <div class="contact">
-                <a href="#2"> Contact Us </a>
-            </div-->
             <div class="hero">
             <div class="brandname">
                 <h1>
@@ -87,11 +64,8 @@
         <div class="services">
             
             <div class="rental">
-                {% if user.is_authenticated %}    
                 <a href="{% url 'rental' %}"> 
-                {%else%}
-                <a href="{% url 'message' %}">
-                {%endif%}        
+                    
                     
             <img src="{% static 'display/img/rental.png'%}" alt="">
                 
@@ -104,13 +78,8 @@
             </a>
             </div>
             <div class="tiffin">
-                {% if user.is_authenticated %}    
-                <a href="{% url 'tiffin' %}">
-            {%else%}
-            <a href="{% url 'message' %}">
-            {%endif%}        
                 
-                
+                <a href="{% url 'tiffin' %}">            
                 <img src="{% static 'display/img/tiffin.png'%}" alt="">
                 <h1>Tiffin</h1>
                 <h3>

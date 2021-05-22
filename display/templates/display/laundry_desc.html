@@ -29,15 +29,9 @@
         <div class = "product-content">
           <h2 class = "product-title">{{ hostel.laundry_name }}</h2>
           <div class = "product-rating">
-            <!--i class = "fas fa-star"></i>
-            <i class = "fas fa-star"></i>
-            <i class = "fas fa-star"></i>
-            <i class = "fas fa-star"></i>
-            <i class = "fas fa-star-half-alt"></i-->
+            
           </div>
-          <div class = "product-price">
-            <p class = "new-price">Price: <span>{{ hostel.laundry_price }}</span></p>
-          </div>
+          <div class = "product-link">Approx Amount: ₹<span>{{ hostel.laundry_price }}</div>
 
           <div class = "product-detail">
             <h2>about this item: </h2>
@@ -56,6 +50,10 @@
             <button type = "button" class = "btn">
               Book now <i class = "fas fa-shopping-cart"></i>
             </button>
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{% url 'laundry' %}" style="{text-decoration: none;}"><button type = "button" class = "btn">
+              Go back
+            </button></a>
           </div>
 
           

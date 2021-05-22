@@ -29,15 +29,10 @@
         <div class = "product-content">
           <h2 class = "product-title">{{ hostel.library_name }}</h2>
           <div class = "product-rating">
-            <!--i class = "fas fa-star"></i>
-            <i class = "fas fa-star"></i>
-            <i class = "fas fa-star"></i>
-            <i class = "fas fa-star"></i>
-            <i class = "fas fa-star-half-alt"></i-->
           </div>
-          <div class = "product-price">
-            <p class = "new-price">Price: <span>{{ hostel.library_deposit }}</span></p>
-          </div>
+
+          <div class = "product-link">Monthly Charges: ₹{{ hostel.library_deposit }}</div>
+          
 
           <div class = "product-detail">
            <h2>about this item: </h2>
@@ -55,8 +50,12 @@
 
           <div class = "purchase-info">
             <button type = "button" class = "btn">
-              Book now <i class = "fas fa-shopping-cart"></i>
+              enroll now <i class = "fas fa-shopping-cart"></i>
             </button>
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="{% url 'library' %}" style="{text-decoration: none;}"><button type = "button" class = "btn">
+              Go back
+            </button></a>
           </div>
 
           
